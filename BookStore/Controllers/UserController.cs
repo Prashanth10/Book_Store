@@ -26,10 +26,12 @@ namespace BookStore.Controllers
         public IHttpActionResult Get_User(int id)
         {
             var data = userRepository.GetUser(id);
+            if (data == null)
+                return NotFound();
             return Ok(data);
         }
 
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult Add_User(User user)
         {
             var data = userRepository.AddUser(user);
@@ -43,7 +45,7 @@ namespace BookStore.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IHttpActionResult Delete_User(int id)
         {
             var data = userRepository.DeleteUser(id);

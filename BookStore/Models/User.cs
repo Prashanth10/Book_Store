@@ -12,8 +12,8 @@ namespace BookStore.Models
         public string Email { get; set; }
         public DateTime DOB { get; set; }
         public string Gender { get; set; }
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         public string Password { get; set; }
-        public int Active { get; set; }
+        public bool Active { get; set; }
     }
 }
