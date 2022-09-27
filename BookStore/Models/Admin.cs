@@ -5,31 +5,25 @@ using System.Web;
 
 namespace BookStore.Models
 {
-    public class User
+    public class Admin
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime DOB { get; set; }
-        public string Gender { get; set; }
         public long Phone { get; set; }
         public string Password { get; set; }
-        public bool Active { get; set; }
 
-        public User()
+        public Admin()
         {
-            
+
         }
-        public User(int id, string name, string email, DateTime dob, string gender, long phone, string password, bool active)
+        public Admin(int id, string name, string email, long phone, string password)
         {
             Id = id;
             Name = name;
             Email = email;
-            DOB = dob;
-            Gender = gender;
             Phone = phone;
             Password = password;
-            Active = active;
         }
     }
 }
