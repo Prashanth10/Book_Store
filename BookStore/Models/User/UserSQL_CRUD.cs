@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
-namespace BookStore.Models
+namespace BookStore.Models.User
 {
     public class UserSQL_CRUD : IUserRepository
     {
