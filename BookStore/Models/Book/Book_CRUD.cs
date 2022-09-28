@@ -69,6 +69,34 @@ namespace BookStore.Models.Book
             return books;
         }
 
+        public List<Book> GetAllBook_ByCatId(int catId)        //http://localhost:63709/api/book?catId=1 (httpget)
+        {
+            Connection();
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select * from book where cat_id="+catId;
+            SqlDataReader dr = comm.ExecuteReader();
+            List<Book> books = new List<Book>();
+            while (dr.Read())
+            {
+                Book book = new Book();
+                book.Id = dr.GetInt32(0);
+                book.Cat_id = dr.GetInt32(1);
+                book.Title = dr.GetString(2);
+                book.ISBN = dr.GetInt64(3);
+                book.Year = dr.GetDateTime(4);
+                book.Price = dr.GetInt32(5);
+                book.Description = dr.GetString(6);
+                book.Position = dr.GetInt32(7);
+                book.Status = dr.GetBoolean(8);
+                book.Image = dr.GetString(9);
+                books.Add(book);
+            }
+            conn.Close();
+            return books;
+        }
+
         public Book GetBook(int id)       //http://localhost:63709/api/book/3 (Httpget)
         {
             Connection();

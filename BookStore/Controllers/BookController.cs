@@ -16,37 +16,46 @@ namespace BookStore.Controllers
             this.bookRepository = new Book_CRUD();
         }
         [HttpGet]
-        public IHttpActionResult GetAll_Category()
+        public IHttpActionResult GetAll_Book()
         {
             var data = bookRepository.GetAllBook();
             return Ok(data);
         }
 
         [HttpGet]
-        public IHttpActionResult Get_Category(int id)
+        public IHttpActionResult Get_Book(int id)
         {
             var data = bookRepository.GetBook(id);
             if (data == null)
                 return NotFound();
             return Ok(data);
         }
+        [HttpGet]
+        [Route("api/book/")]
+        public IHttpActionResult GetAll_Book_ByCategory(int catId)
+        {
+            var data = bookRepository.GetAllBook_ByCatId(catId);
+            if (data == null)
+                return NotFound();
+            return Ok(data);
+        }
 
         [HttpPut]
-        public IHttpActionResult Add_Category(Book bk)
+        public IHttpActionResult Add_Book(Book bk)
         {
             var data = bookRepository.AddBook(bk);
             return Ok(data);
         }
 
         [HttpPost]
-        public IHttpActionResult Update_Category(Book bk)
+        public IHttpActionResult Update_Book(Book bk)
         {
             var data = bookRepository.UpdateBook(bk);
             return Ok(data);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete_Category(int id)
+        public IHttpActionResult Delete_Book(int id)
         {
             var data = bookRepository.DeleteBook(id);
             return Ok(data);
