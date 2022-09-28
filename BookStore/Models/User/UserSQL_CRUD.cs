@@ -15,6 +15,17 @@ namespace BookStore.Models.User
             string connectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
             conn = new SqlConnection(connectionString);
         }
+        public bool Auth(User user)   //http://localhost:63709/api/user/auth (httppost)
+        {
+            Connection();
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select count(*) from [user] where user_id=" + user.Id + " and user_password='" + user.Password + "'";
+            int count = Convert.ToInt32(comm.ExecuteScalar());
+            conn.Close();
+            return count == 1 ? true : false;
+        }
         public bool AddUser(User user)      //http://localhost:63709/api/user (httpput)
         {
             Connection();

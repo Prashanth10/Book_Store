@@ -20,6 +20,11 @@ namespace BookStore.Models.User
         {
             
         }
+        public User(int id, string password)
+        {
+            Id = id;
+            Password = password; 
+        }
         public User(int id, string name, string email, DateTime dob, string gender, long phone, string password, bool active)
         {
             Id = id;

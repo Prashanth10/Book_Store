@@ -15,6 +15,17 @@ namespace BookStore.Models.Admin
             string connectionString = ConfigurationManager.ConnectionStrings["mydb"].ConnectionString;
             conn = new SqlConnection(connectionString);
         }
+        public bool Auth(Admin admin)   //http://localhost:63709/api/admin/auth (httppost)
+        {
+            Connection();
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select count(*) from [admin] where admin_id=" + admin.Id + " and admin_password='" + admin.Password + "'";
+            int count = Convert.ToInt32(comm.ExecuteScalar());
+            conn.Close();
+            return count == 1 ? true : false;
+        }
         public bool AddAdmin(Admin admin)       //http://localhost:63709/api/admin (httpput)
         {
             Connection();

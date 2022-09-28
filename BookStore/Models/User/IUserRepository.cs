@@ -7,6 +7,7 @@ namespace BookStore.Models.User
 {
     public interface IUserRepository
     {
+        bool Auth(User user);
         List<User> GetAllUsers();
         User GetUser(int id);
         bool AddUser(User user);

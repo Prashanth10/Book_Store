@@ -15,6 +15,13 @@ namespace BookStore.Controllers
         {
             this.adminRepository = new Admin_CRUD();
         }
+        [HttpPost]
+        [Route("api/admin/auth")]
+        public IHttpActionResult Authenticate(Admin admin)
+        {
+            var data = adminRepository.Auth(admin);
+            return Ok(data);
+        }
         [HttpGet]
         public IHttpActionResult GetAll_Admins()
         {

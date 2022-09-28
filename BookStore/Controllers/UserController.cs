@@ -15,6 +15,13 @@ namespace BookStore.Controllers
         {
             this.userRepository = new UserSQL_CRUD();
         }
+        [HttpPost]
+        [Route("api/user/auth")]
+        public IHttpActionResult Authenticate(User user)
+        {
+            var data = userRepository.Auth(user);
+            return Ok(data);
+        }
         [HttpGet]
         public IHttpActionResult GetAll_Users()
         {

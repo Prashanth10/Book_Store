@@ -17,6 +17,11 @@ namespace BookStore.Models.Admin
         {
 
         }
+        public Admin(int id, string password)
+        {
+            Id = id;
+            Password = password;
+        }
         public Admin(int id, string name, string email, long phone, string password)
         {
             Id = id;
