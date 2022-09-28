@@ -90,6 +90,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CouponController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
@@ -105,9 +106,11 @@
     <Compile Include="Models\Cart\ICartRepository.cs" />
     <Compile Include="Models\Category\Category.cs" />
     <Compile Include="Models\Category\Category_CRUD.cs" />
-    <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\Coupon\Coupon.cs" />
     <Compile Include="Models\Book\IBookRepository.cs" />
     <Compile Include="Models\Category\ICategoryRepository.cs" />
+    <Compile Include="Models\Coupon\Coupon_CRUD.cs" />
+    <Compile Include="Models\Coupon\ICouponRepository.cs" />
     <Compile Include="Models\Order\IOrderRepository.cs" />
     <Compile Include="Models\Order\Order_CRUD.cs" />
     <Compile Include="Models\User\IUserRepository.cs" />
