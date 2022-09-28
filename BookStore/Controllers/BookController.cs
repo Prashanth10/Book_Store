@@ -16,6 +16,7 @@ namespace BookStore.Controllers
             this.bookRepository = new Book_CRUD();
         }
         [HttpGet]
+        [Route("api/book/")]
         public IHttpActionResult GetAll_Book()
         {
             var data = bookRepository.GetAllBook();
@@ -41,6 +42,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPut]
+        [Route("api/book/")]
         public IHttpActionResult Add_Book(Book bk)
         {
             var data = bookRepository.AddBook(bk);
@@ -48,6 +50,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
+        [Route("api/book/")]
         public IHttpActionResult Update_Book(Book bk)
         {
             var data = bookRepository.UpdateBook(bk);
