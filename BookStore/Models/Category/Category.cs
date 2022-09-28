@@ -19,6 +19,15 @@ namespace BookStore.Models.Category
         {
 
         }
+        public Category(int id, string name, string description, string image, bool status, int position)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Image = image;
+            Status = status;
+            Position = position;
+        }
         public Category(int id, string name, string description, string image, bool status, int position, DateTime createdat)
         {
             Id = id;
