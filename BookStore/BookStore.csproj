@@ -87,8 +87,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -97,7 +99,9 @@
     <Compile Include="Models\Admin\IAdminRepository.cs" />
     <Compile Include="Models\Book\Book.cs" />
     <Compile Include="Models\Book\Book_CRUD.cs" />
-    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\Cart_CRUD.cs" />
+    <Compile Include="Models\Cart\ICartRepository.cs" />
     <Compile Include="Models\Category\Category.cs" />
     <Compile Include="Models\Category\Category_CRUD.cs" />
     <Compile Include="Models\Coupon.cs" />
@@ -107,7 +111,9 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Models\User\UserSQL_CRUD.cs" />
-    <Compile Include="Models\WishList.cs" />
+    <Compile Include="Models\Wishlist\IWishlistRepository.cs" />
+    <Compile Include="Models\Wishlist\Wishlist.cs" />
+    <Compile Include="Models\Wishlist\Wishlist_CRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
