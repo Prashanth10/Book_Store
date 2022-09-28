@@ -13,5 +13,6 @@ namespace BookStore.Models.User
         bool AddUser(User user);
         bool UpdateUser(User user);
         bool DeleteUser(int id);
+        bool ActivateUser(int id, bool status);
     }
 }

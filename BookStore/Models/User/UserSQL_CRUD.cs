@@ -113,5 +113,19 @@ namespace BookStore.Models.User
             conn.Close();
             return row > 0;
         }
+
+        public bool ActivateUser(int id, bool activate)     //http://localhost:63709/api/user?id=1&activate=true (httpput)
+        {
+            Connection();
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            int status = Convert.ToInt32(activate);
+            comm.CommandText = "update [user] set user_active="+ status + " where user_id="+id;
+            int row = comm.ExecuteNonQuery();
+            conn.Close();
+            return row > 0;
+        }
+
     }
 }

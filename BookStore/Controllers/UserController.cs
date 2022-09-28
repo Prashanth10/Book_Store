@@ -58,5 +58,12 @@ namespace BookStore.Controllers
             var data = userRepository.DeleteUser(id);
             return Ok(data);
         }
+
+        [HttpPut]
+        public IHttpActionResult Activate_User(int id, bool activate)
+        {
+            var data = userRepository.ActivateUser(id, activate);
+            return Ok(data);
+        }
     }
 }
