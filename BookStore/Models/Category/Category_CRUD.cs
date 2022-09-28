@@ -46,7 +46,7 @@ namespace BookStore.Models.Category
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "select * from category";
+            comm.CommandText = "select * from category order by cat_position";
             SqlDataReader dr = comm.ExecuteReader();
             List<Category> categories = new List<Category>();
             while (dr.Read())
