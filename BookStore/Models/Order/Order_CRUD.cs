@@ -48,7 +48,7 @@ namespace BookStore.Models.Order
             comm.Connection = conn;
             comm.CommandText = "select * from [order]";
             SqlDataReader dr = comm.ExecuteReader();
-            List<Order> orderegories = new List<Order>();
+            List<Order> orders = new List<Order>();
             while (dr.Read())
             {
                 Order order = new Order();
@@ -60,10 +60,36 @@ namespace BookStore.Models.Order
                 order.Savings = dr.GetInt32(5);
                 order.Address = dr.GetString(6);
                 order.Order_date = dr.GetDateTime(7);
-                orderegories.Add(order);
+                orders.Add(order);
             }
             conn.Close();
-            return orderegories;
+            return orders;
+        }
+
+        public List<Order> GetAllOrder_ByUserId(int userID)      //http://localhost:63709/api/order?userId=1 (httpget)
+        {
+            Connection();
+            conn.Open();
+            SqlCommand comm = new SqlCommand();
+            comm.Connection = conn;
+            comm.CommandText = "select * from [order] where user_id="+userID;
+            SqlDataReader dr = comm.ExecuteReader();
+            List<Order> orders = new List<Order>();
+            while (dr.Read())
+            {
+                Order order = new Order();
+                order.Id = dr.GetInt32(0);
+                order.User_id = dr.GetInt32(1);
+                order.Book_id = dr.GetInt32(2);
+                order.Price = dr.GetInt32(3);
+                order.Quantity = dr.GetInt32(4);
+                order.Savings = dr.GetInt32(5);
+                order.Address = dr.GetString(6);
+                order.Order_date = dr.GetDateTime(7);
+                orders.Add(order);
+            }
+            conn.Close();
+            return orders;
         }
 
         public Order GetOrder(int id)     //http://localhost:63709/api/order/1 (httpget)

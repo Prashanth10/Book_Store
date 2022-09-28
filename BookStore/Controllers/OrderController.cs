@@ -16,6 +16,7 @@ namespace BookStore.Controllers
             this.orderRepository = new Order_CRUD();
         }
         [HttpGet]
+        [Route("api/order")]
         public IHttpActionResult GetAll_Order()
         {
             var data = orderRepository.GetAllOrder();
@@ -31,7 +32,16 @@ namespace BookStore.Controllers
             return Ok(data);
         }
 
+        [HttpGet]
+        [Route("api/order/")]
+        public IHttpActionResult GetAll_Order_ByUserId(int userId)
+        {
+            var data = orderRepository.GetAllOrder_ByUserId(userId);
+            return Ok(data);
+        }
+
         [HttpPut]
+        [Route("api/order/")]
         public IHttpActionResult Add_Order(Order order)
         {
             var data = orderRepository.AddOrder(order);
@@ -39,6 +49,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
+        [Route("api/order/")]
         public IHttpActionResult Update_Order(Order order)
         {
             var data = orderRepository.UpdateOrder(order);
