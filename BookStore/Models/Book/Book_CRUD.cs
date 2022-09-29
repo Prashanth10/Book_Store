@@ -69,13 +69,33 @@ namespace BookStore.Models.Book
             return books;
         }
 
-        public List<Book> GetAllBook_ByCatId(int catId)        //http://localhost:63709/api/book?catId=1 (httpget)
+        public List<Book> GetAllBook_ByQuery(string by, string query)        
         {
+            /*    http://localhost:63709/api/book?by=name&query=%om% (httpget)
+                http://localhost:63709/api/book?by=catId&query=1
+                http://localhost:63709/api/book?by=isbn&query=9354600433*/
             Connection();
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "select * from book where cat_id="+catId;
+            switch (by)
+            {
+                case "name":
+                    comm.CommandText = "select * from book where bk_title like '"+query+"' ";
+                    break;
+                case "catId":
+                    int catid = Convert.ToInt32(query);
+                    comm.CommandText = "select * from book where cat_id=" + catid;
+                    break;
+                case "isbn":
+                    long isbn = Convert.ToInt64(query);
+                    comm.CommandText = "select * from book where bk_isbn=" + isbn;
+                    break;
+                default:
+                    return null;
+                    break;
+            }
+            
             SqlDataReader dr = comm.ExecuteReader();
             List<Book> books = new List<Book>();
             while (dr.Read())

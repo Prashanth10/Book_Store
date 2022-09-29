@@ -33,9 +33,9 @@ namespace BookStore.Controllers
         }
         [HttpGet]
         [Route("api/book/")]
-        public IHttpActionResult GetAll_Book_ByCategory(int catId)
+        public IHttpActionResult GetAll_Book_ByCategory(string by, string query)
         {
-            var data = bookRepository.GetAllBook_ByCatId(catId);
+            var data = bookRepository.GetAllBook_ByQuery(by,query);
             if (data == null)
                 return NotFound();
             return Ok(data);
