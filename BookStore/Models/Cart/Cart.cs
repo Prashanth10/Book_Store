@@ -10,16 +10,18 @@ namespace BookStore.Models.Cart
         public int Id { get; set; }
         public int User_id { get; set; }
         public int Book_id { get; set; }
+        public int Quantity { get; set; }
 
         public Cart()
         {
 
         }
-        public Cart(int id, int user_id, int book_id)
+        public Cart(int id, int user_id, int book_id, int quantity)
         {
             Id = id;
             User_id = user_id;
             Book_id = book_id;
+            Quantity = quantity;
         }
     }
 }

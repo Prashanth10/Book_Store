@@ -21,8 +21,8 @@ namespace BookStore.Models.Cart
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "insert into cart (user_id, bk_id) " +
-                "values (" + cart.User_id + "," + cart.Book_id + ")";
+            comm.CommandText = "insert into cart (user_id, bk_id, quantity) " +
+                "values (" + cart.User_id + "," + cart.Book_id + "," + cart.Quantity + ")";
             int row = comm.ExecuteNonQuery();
             conn.Close();
             return row > 0;
@@ -86,7 +86,7 @@ namespace BookStore.Models.Cart
             conn.Open();
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn;
-            comm.CommandText = "update cart set user_id=" + cart.User_id + ", bk_id=" + cart.Book_id + " where cart_id=" + cart.Id;
+            comm.CommandText = "update cart set user_id=" + cart.User_id + ", bk_id=" + cart.Book_id + ", quantity=" + cart.Quantity + " where cart_id=" + cart.Id;
             int row = comm.ExecuteNonQuery();
             conn.Close();
             return row > 0;
