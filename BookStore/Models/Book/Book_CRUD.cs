@@ -93,7 +93,6 @@ namespace BookStore.Models.Book
                     break;
                 default:
                     return null;
-                    break;
             }
             
             SqlDataReader dr = comm.ExecuteReader();
