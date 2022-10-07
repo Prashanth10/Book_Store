@@ -33,6 +33,16 @@ namespace BookStore.Controllers
             return Ok(data);
         }
 
+        [HttpGet]
+        [Route("api/wishlist/user/")]
+        public IHttpActionResult Get_Wishlist_ByuserId(int id)
+        {
+            var data = wishlistRepository.GetWishlistByUserId(id);
+            if (data == null)
+                return NotFound();
+            return Ok(data);
+        }
+
         [HttpPut]
         public IHttpActionResult Add_Wishlist(Wishlist wishlist)
         {

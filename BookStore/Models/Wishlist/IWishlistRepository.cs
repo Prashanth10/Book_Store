@@ -10,6 +10,7 @@ namespace BookStore.Models.Wishlist
     {
         List<Wishlist> GetAllWishlists();
         Wishlist GetWishlist(int id);
+        Wishlist GetWishlistByUserId(int id);
         bool AddWishlist(Wishlist wishlist);
         bool UpdateWishlist(Wishlist wishlist);
         bool DeleteWishlist(int id);
