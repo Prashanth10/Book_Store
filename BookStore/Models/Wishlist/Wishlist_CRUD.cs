@@ -59,7 +59,7 @@ namespace BookStore.Models.Wishlist
             return wishlist;
         }
 
-        public Wishlist GetWishlistByUserId(int id)        //http://localhost:63709/api/wishlist/user?id=1 (httpget)
+        public List<Wishlist> GetWishlistByUserId(int id)        //http://localhost:63709/api/wishlist/user?id=1 (httpget)
         {
             Connection();
             conn.Open();
@@ -67,15 +67,17 @@ namespace BookStore.Models.Wishlist
             comm.Connection = conn;
             comm.CommandText = "select * from wishlist where user_id=" + id;
             SqlDataReader dr = comm.ExecuteReader();
-            Wishlist wishlist = new Wishlist();
-            if (dr.Read())
+            List<Wishlist> wishlists = new List<Wishlist>();
+            while (dr.Read())
             {
+                Wishlist wishlist = new Wishlist();
                 wishlist.Id = dr.GetInt32(0);
                 wishlist.User_id = id;
                 wishlist.Book_id = dr.GetInt32(2);
+                wishlists.Add(wishlist);
             }
             conn.Close();
-            return wishlist;
+            return wishlists;
         }
 
         public List<Wishlist> GetAllWishlists()        //http://localhost:63709/api/wishlist (httpget)
